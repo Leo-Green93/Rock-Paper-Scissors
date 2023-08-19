@@ -1,5 +1,4 @@
-
-function getComputerChoice() {
+function getComputerChoice() {    
     let values = ["Rock", "Paper", "Scissors"]   
     let randomized = Math.floor(Math.random() * values.length)
     let response = values[randomized]
@@ -11,51 +10,60 @@ function getPlayerChoice() {
 }
 
 const computerSelection = getComputerChoice();
-const humanScore = 0;
-const computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 function totalHumanScore() {
-    return humanScore + 1
+    humanScore++
 }
 
 function totalComputerScore() {
-    return computerScore + 1
+    computerScore++
 }
 
 function playRound(playerSelection, computerSelection) {
     let input = playerSelection.charAt(0).toUpperCase() + playerSelection.substr(1).toLowerCase();
     
-    let computerRoundScore = totalComputerScore()
-    let humanRoundScore = totalHumanScore()
     
     if (input === computerSelection) {
-    alert("It's a tie!")
-    return "The scores have not changed.";
-   } else if (input === "Rock" && computerSelection === "Paper") {
-    alert("You Lose! Paper beats Rock.")
-    computerRoundScore += 1;
-    return "The human has scored " + humanRoundScore + ". The computer has scored " + computerRoundScore + ".";
+    alert("It's a tie! Comp: " + computerScore + "Player: " + humanScore)
+   } 
+   
+   else if (input === "Rock" && computerSelection === "Paper") {
+    totalComputerScore()
+    alert("You Lose! Paper beats Rock. Comp: " + computerScore + " Player: " + humanScore)
+   
    } else if (input === "Paper" && computerSelection === "Scissors") {
-    alert("You Lose! Scissors beat Paper.")
-    computerRoundScore += 1;
-    return "The human has scored " + humanRoundScore + ". The computer has scored " + computerRoundScore + ".";
+    totalComputerScore()
+    alert("You Lose! Scissors beat Paper. Comp: " + computerScore + " Player: " + humanScore)
+   
    } else if (input === "Scissors" && computerSelection === "Rock") {
-    alert("You Lose! Rock beats Scissors.")
-    computerRoundScore += 1;
-    return "The human has scored " + humanRoundScore + ". The computer has scored " + computerRoundScore + ".";
-   } else {
-    alert("You win!")
-    humanRoundScore += 1
-    return "The human has scored " + humanRoundScore + ". The computer has scored " + computerRoundScore + ".";
-   }
+    totalComputerScore()
+    alert("You Lose! Rock beats Scissors. Comp: " + computerScore + " Player: " + humanScore)
+    
+   } else if (input === "Paper" && computerSelection === "Rock") {
+    totalHumanScore()
+    alert("You win! Paper beats Rock. Comp: " + computerScore + " Player: " + humanScore)
+
+   } else if (input === "Scissors" && computerSelection === "Paper") {
+    totalHumanScore()
+    alert("You win! Scissors beat Paper. Comp: " + computerScore + " Player: " + humanScore) 
+
+   } else if (input === "Rock" && computerSelection === "Scissors") {
+    totalHumanScore()
+    alert("You win! Rock beats Scissors. Comp: " + computerScore + " Player: " + humanScore) 
+}
 }
 
 function game() {
     for(let i = 0; i < 5; i++) {
         let newPlayerSelection = getPlayerChoice()
         let newComputerSelection = getComputerChoice();
-        console.log(playRound(newPlayerSelection, newComputerSelection))
+        playRound(newPlayerSelection, newComputerSelection)
+        
 }
+    alert("The final scores are Comp: " + computerScore + " Player: " + humanScore)
 }
 
-console.log(game())
+game()
+
