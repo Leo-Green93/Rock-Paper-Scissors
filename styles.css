@@ -1,8 +1,33 @@
-.reset {
-    display: none;
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(linen, pink);
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    color: maroon;
+    text-shadow: 0 0 4px grey;
+}
+
+.choices {
+    display: flex;
+    width: 80vw;
+    justify-content: space-around;
+    margin-top: 200px;
+    position: absolute;
+    z-index: 1;
 }
 
 img {
     height: 100px;
     width: auto;
+    justify-content: space-between;
+   
+}
+
+
+.reset {
+    display: none;
 }
